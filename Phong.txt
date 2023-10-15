@@ -1,0 +1,35 @@
+#version 400 core
+
+out vec4 oColor;
+
+in vec4 v_Color;
+in vec4 v_Pos;
+in vec3 normalVec;
+in vec3 lightDir;
+
+uniform vec3 LightColor;
+uniform vec3 D_LightDir;
+
+void main()
+{
+	
+	float ambient_num = 0.3;
+	vec3 ambient = ambient_num * LightColor;
+
+	float diffuse_num = 0.7;
+	float diff = max(dot(normalVec, lightDir), 0.0); //Point
+	float diff2 = max(dot(normalVec, D_LightDir), 0.0); //Direction
+	vec3 diffuse = diffuse_num * diff * diff2 * LightColor;
+
+	float specular_num = 0.5;
+	vec3 viewDir = normalize(vec3(0.0, 0.0, 0.0) - v_Pos.xyz);
+	vec3 reflectDir = normalize(reflect(-lightDir, normalVec));
+	vec3 reflectDir2 = normalize(reflect(-D_LightDir, normalVec));
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0); //Point
+	float spec2 = pow(max(dot(viewDir, reflectDir2), 0.0), 32.0); //Direction
+	vec3 specular = specular_num * spec * spec2 * LightColor;
+
+	vec3 c = v_Color.xyz * (ambient + diffuse + specular);
+	
+	oColor = vec4(c, 1.0);
+}

@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+*.pdb
+*.idb
+*.tlog
+x64/Debug/CG_HW3.vcxproj.FileListAbsolute.txt
+x64/Debug/CG_HW3.log
+x64/Debug/CG_HW3.ilk
+x64/Debug/CG_HW3.exe.recipe
+.vs/CG_HW3/v17/ipch/AutoPCH/90b9512f60f76fd9/MAIN.ipch
+.vs/CG_HW3/v17/fileList.bin
+.vs/CG_HW3/v17/Browse.VC.db
+.vs/CG_HW3/v17/.suo
+.vs/CG_HW3/FileContentIndex/read.lock
+.vs/CG_HW3/FileContentIndex/7310977f-3f3c-4bf8-8abb-a953667ff8df.vsidx
